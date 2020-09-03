@@ -1,0 +1,75 @@
+syntax = "proto3";
+package helm;
+option go_package = "proto/code/helm";
+
+message Options {
+  string namespace = 1;
+  string repository_config = 2;
+  string repository_cache = 3;
+  bool debug = 4;
+  bool linting = 5;
+}
+
+message ListOption {
+  bool all_namespaces = 1;
+  bool by_date = 2;
+  int64 limit = 3;
+  string filter = 4;
+  bool short = 5;
+  bool uninstalled = 6;
+  bool superseded = 7;
+  bool uninstalling = 8;
+  bool deployed = 9;
+  bool failed = 10;
+  bool pending = 11;
+}
+
+message InstallOption {
+  bool disable_hooks = 1;
+  bool replace = 2;
+  bool wait = 3;
+  bool dependency_update = 4;
+  int64 timeout = 5;
+  string namespace = 6;
+  string release_name = 7;
+  string version = 8;
+  bool generate_name = 9;
+  string name_template = 10;
+  string description = 11;
+  bool atomic = 12;
+  bool skip_crds = 13;
+  bool sub_notes = 14;
+  bool disable_open_api_validation = 15;
+  bool include_crds = 16;
+}
+
+message UpgradeOption {
+  bool install = 1;
+  bool devel = 2;
+  string namespace = 3;
+  bool skip_crds = 4;
+  int64 timeout = 5;
+  bool wait = 6;
+  bool disable_hooks = 7;
+  bool dry_run = 8;
+  bool force = 9;
+  bool reset_values = 10;
+  bool reuse_values = 11;
+  bool recreate = 12;
+  int64 max_history = 13;
+  bool atomic = 14;
+  bool cleanup_on_fail = 15;
+  bool sub_notes = 16;
+  string description = 17;
+  bool disable_open_api_validation = 18;
+  string release_name = 19;
+  bool upgrade_crds = 20;
+}
+
+message UninstallOption {
+  bool disable_hooks = 1;
+  bool dry_run = 2;
+  bool keep_history = 3;
+  int64 timeout = 4;
+  string description = 5;
+}

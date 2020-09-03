@@ -1,0 +1,41 @@
+syntax = "proto3";
+package console;
+option go_package = "proto/code/console";
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+
+service Datasource {
+  rpc DatasourceTableList(google.protobuf.Empty) returns (TableListResponse) {
+    option (google.api.http) = {
+      get: "/api/datasource/table/list"
+    };
+  }
+}
+
+message DatasourceGetRequest {
+
+}
+
+message DatasourceData {
+  int64 id = 1;
+  string type = 2;
+  string name = 3;
+  string host = 4;
+  int64 port = 5;
+  string username = 6;
+  string password = 7;
+}
+
+message TableListResponse {
+  repeated TableData tables = 1;
+}
+
+message TableData {
+  string name = 1;
+  string comment = 2;
+  int32 count = 3;
+  string table_size = 4;
+  string index_size = 5;
+  string total_size = 6;
+}
